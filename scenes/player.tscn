@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://7a45as6p140a"]
+
+[ext_resource type="Script" uid="uid://dp4prc15lv6o1" path="res://scripts/player.gd" id="1_3vyb7"]
+[ext_resource type="Texture2D" uid="uid://m385dxqaq3y3" path="res://Assets/Crosshair.png" id="2_g2els"]
+[ext_resource type="Texture2D" uid="uid://c170naivpqi8u" path="res://Assets/paper.png" id="2_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://b8ajxwkh6cj36" path="res://Assets/Camera.blend" id="4_dqkch"]
+[ext_resource type="AudioStream" uid="uid://dit3q7pl866ne" path="res://Assets/psx_man/textures/malarbrush-camera-flash-204151.mp3" id="5_qlg0r"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_u8vuu"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3vyb7"]
+
+[sub_resource type="Animation" id="Animation_dqkch"]
+resource_name = "Camera"
+length = 0.96666664
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/Camera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.66, 0.85),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.31405407, -0.2692424, -0.49643695), Vector3(0.2283091, -0.12831318, -0.49643695), Vector3(0.016924083, -0.103833795, -0.49643695), Vector3(0.016924083, -0.05421734, -0.4382838)]
+}
+
+[sub_resource type="Animation" id="Animation_qlg0r"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/Camera:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.31405407, -0.2692424, -0.49643695)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tuyoq"]
+_data = {
+&"Camera": SubResource("Animation_dqkch"),
+&"RESET": SubResource("Animation_qlg0r")
+}
+
+[node name="Player" type="CharacterBody3D" unique_id=1002632616]
+script = ExtResource("1_3vyb7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=978980100]
+mesh = SubResource("CapsuleMesh_u8vuu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1596267490]
+shape = SubResource("CapsuleShape3D_3vyb7")
+
+[node name="Head" type="Node3D" parent="." unique_id=803331793]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6483905, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head" unique_id=1712543827]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Head/Camera3D" unique_id=1515712061]
+
+[node name="TextureRect" type="TextureRect" parent="Head/Camera3D/CanvasLayer" unique_id=57191956]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 65.0
+offset_right = -65.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_qhqgy")
+
+[node name="Crosshair" type="Sprite2D" parent="Head/Camera3D/CanvasLayer" unique_id=629212231]
+position = Vector2(158, 120)
+texture = ExtResource("2_g2els")
+
+[node name="LineEdit" type="LineEdit" parent="Head/Camera3D/CanvasLayer" unique_id=1037527293]
+offset_right = 291.0
+offset_bottom = 31.0
+
+[node name="RayCast3D" type="RayCast3D" parent="Head/Camera3D" unique_id=1452122302]
+transform = Transform3D(3, 0, 0, 0, -1.3113416e-07, -3, 0, 3, -1.3113416e-07, 0, 0, 0)
+collide_with_areas = true
+
+[node name="Camera" parent="Head/Camera3D" unique_id=1691103974 instance=ExtResource("4_dqkch")]
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0.31405407, -0.2692424, -0.49643695)
+
+[node name="Spot" type="SpotLight3D" parent="Head/Camera3D/Camera" unique_id=2101215874]
+light_energy = 16.0
+light_indirect_energy = 16.0
+spot_range = 4096.0
+spot_angle = 80.64
+
+[node name="Flash" type="AudioStreamPlayer3D" parent="Head/Camera3D/Camera" unique_id=1814952957]
+stream = ExtResource("5_qlg0r")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1069262374]
+libraries/ = SubResource("AnimationLibrary_tuyoq")

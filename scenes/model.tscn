@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://otjfketkpqgr"]
+
+[ext_resource type="PackedScene" uid="uid://hetn8sowuy87" path="res://Assets/psx_man/scene.gltf" id="1_nvfas"]
+
+[node name="Model" type="Node3D" unique_id=472887337]
+
+[node name="Sketchfab_Scene" parent="." unique_id=47008638 instance=ExtResource("1_nvfas")]
+transform = Transform3D(0.15739495, 0, 0, 0, 0.16630487, 0, 0, 0, 0.35922542, 58.261536, 0, 0)

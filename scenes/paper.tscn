@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://m5ejbrwmmeun"]
+
+[ext_resource type="Script" uid="uid://cmxcxu1bkpbac" path="res://scripts/paper.gd" id="1_ldlei"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vas6c"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_cbjgq"]
+
+[node name="Paper" type="Area3D" unique_id=1060965585]
+script = ExtResource("1_ldlei")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1202004684]
+shape = SubResource("BoxShape3D_vas6c")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1928271699]
+mesh = SubResource("BoxMesh_cbjgq")

@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dworc5c2yobx3"]
+
+[ext_resource type="PackedScene" uid="uid://b8ajxwkh6cj36" path="res://Assets/Camera.blend" id="1_cvpoc"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_dqkch"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qlg0r"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_dqkch")
+
+[sub_resource type="BoxMesh" id="BoxMesh_cvpoc"]
+
+[node name="Camera" unique_id=1691103974 instance=ExtResource("1_cvpoc")]
+
+[node name="Camera" parent="." index="1" unique_id=2146952306 instance=ExtResource("1_cvpoc")]
+transform = Transform3D(0.03, 0, 0, 0, 0.03, 0, 0, 0, 0.03, 0.31405407, -0.2692424, -0.49643695)
+
+[node name="SubViewport" type="SubViewport" parent="Camera" index="1" unique_id=1862072783]
+
+[node name="Camera3D" type="Camera3D" parent="Camera/SubViewport" index="0" unique_id=529498879]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37207842, 0.40177277, -0.594957)
+
+[node name="Screenmesh" type="MeshInstance3D" parent="Camera/SubViewport/Camera3D" index="0" unique_id=500669874]
+transform = Transform3D(0.15015791, 0, 0, 0, 0.12335536, 0, 0, 0, 0.030990116, -0.09298512, -0.022624701, 0.1544284)
+material_override = SubResource("StandardMaterial3D_qlg0r")
+mesh = SubResource("BoxMesh_cvpoc")

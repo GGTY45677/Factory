@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bogre3yslbkdh"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_cur4t"]
+
+[node name="Light" type="Node3D" unique_id=447736558]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1367061031]
+transform = Transform3D(0.7748134, 0, 0, 0, 0.16567293, 0, 0, 0, 1.5520743, 0, 0, 0)
+mesh = SubResource("BoxMesh_cur4t")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="MeshInstance3D" unique_id=824047906]
+transform = Transform3D(1.2906333, 0, 0, 0, -0.16411209, 6.0337586, 0, -0.64406085, -0.0175178, 0, 0, 0)
+light_color = Color(1, 0.7058824, 0.3372549, 1)
+light_energy = 16.0
+light_indirect_energy = 16.0
+spot_range = 35.93746
+spot_angle = 77.49301
