@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://2vsubnn182yj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e6q5i"]
+size = Vector3(6.1869507, 3.9882813, 1)
+
+[node name="TriggerZone" type="Area3D" unique_id=1893458301]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2147330029]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.16519165, 1.4941406, 0)
+shape = SubResource("BoxShape3D_e6q5i")
+debug_color = Color(0.95474964, 0.21548727, 0, 0.41960785)
